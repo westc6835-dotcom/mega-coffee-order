@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메가커피 교직원 단체 주문</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="school-label">학교 교직원 단체 주문</p>
+      <h1>메가커피 주문</h1>
+      <p class="sub-text">이름과 음료를 선택한 뒤 제출해 주세요.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs">
+      <button id="orderTab" class="tab active">주문하기</button>
+      <button id="adminTab" class="tab">관리자</button>
+    </nav>
+
+    <section id="orderPage" class="card">
+      <div class="section-title">
+        <h2>음료 주문</h2>
+        <span id="orderStatusBadge" class="badge">주문 가능</span>
+      </div>
+
+      <label for="teacherName">이름</label>
+      <input id="teacherName" type="text" placeholder="예: 홍길동" autocomplete="name" />
+
+      <label for="menuSearch">메뉴 검색</label>
+      <input id="menuSearch" type="search" placeholder="예: 아메리카노, 라떼, 에이드" />
+
+      <label for="drink">음료 메뉴</label>
+      <select id="drink"></select>
+
+      <div class="grid-2">
+        <div>
+          <label for="temperature">HOT / ICE</label>
+          <select id="temperature"></select>
+        </div>
+        <div>
+          <label for="size">사이즈</label>
+          <select id="size">
+            <option value="기본" data-extra="0">기본</option>
+            <option value="대용량" data-extra="500">대용량 +500원</option>
+          </select>
+        </div>
+      </div>
+
+      <label>옵션 선택</label>
+      <div class="option-grid">
+        <label><input type="checkbox" class="option" value="샷 추가" data-extra="500" /> 샷 추가 +500원</label>
+        <label><input type="checkbox" class="option" value="시럽 추가" data-extra="300" /> 시럽 추가 +300원</label>
+        <label><input type="checkbox" class="option" value="휘핑 추가" data-extra="500" /> 휘핑 추가 +500원</label>
+        <label><input type="checkbox" class="option" value="얼음 적게" data-extra="0" /> 얼음 적게</label>
+      </div>
+
+      <label for="request">요청사항</label>
+      <textarea id="request" placeholder="예: 덜 달게 해 주세요, 빨대 주세요"></textarea>
+
+      <div class="price-box">
+        <span>예상 금액</span>
+        <strong id="pricePreview">0원</strong>
+      </div>
+
+      <button id="submitOrder" class="primary">주문 제출</button>
+      <p class="help">※ 메뉴와 가격은 예시입니다. 실제 매장 가격에 맞게 app.js의 MENU_DATA를 수정하세요.</p>
+    </section>
+
+    <section id="adminPage" class="card hidden">
+      <div class="section-title">
+        <h2>관리자 화면</h2>
+        <span class="badge admin">실시간 집계</span>
+      </div>
+
+      <div id="loginBox" class="login-box">
+        <label for="adminPassword">관리자 비밀번호</label>
+        <input id="adminPassword" type="password" placeholder="비밀번호 입력" />
+        <button id="loginButton" class="primary">관리자 로그인</button>
+        <p class="help">기본 비밀번호는 README 안내에 따라 app.js에서 바꾸세요.</p>
+      </div>
+
+      <div id="adminContent" class="hidden">
+        <div class="summary-grid">
+          <div class="summary-card"><span>총 주문 수</span><strong id="totalCount">0</strong></div>
+          <div class="summary-card"><span>총 금액</span><strong id="totalPrice">0원</strong></div>
+        </div>
+
+        <div class="admin-buttons">
+          <button id="toggleOrdering" class="secondary">주문 마감/재개</button>
+          <button id="downloadCSV" class="secondary">CSV 다운로드</button>
+          <button id="clearOrders" class="danger">전체 주문 삭제</button>
+        </div>
+
+        <h3>메뉴별 집계</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>메뉴</th><th>수량</th><th>금액</th></tr></thead>
+            <tbody id="menuSummary"></tbody>
+          </table>
+        </div>
+
+        <h3>전체 주문 목록</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>시간</th><th>이름</th><th>주문</th><th>요청</th><th>금액</th><th>관리</th></tr></thead>
+            <tbody id="orderList"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

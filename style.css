@@ -1,0 +1,42 @@
+* { box-sizing: border-box; }
+:root { --yellow:#ffd400; --black:#222; --gray:#f4f5f7; --line:#e6e6e6; --red:#e94b4b; }
+body { margin:0; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--gray); color:var(--black); }
+.app-header { background:linear-gradient(135deg,#ffe45c,var(--yellow)); padding:24px 18px; border-bottom:1px solid #e3bc00; }
+.app-header div { max-width:760px; margin:0 auto; }
+.school-label { margin:0 0 4px; font-size:13px; font-weight:800; opacity:.75; }
+h1 { margin:0; font-size:28px; }
+.sub-text { margin:6px 0 0; font-size:14px; }
+.container { max-width:760px; margin:0 auto; padding:16px; }
+.tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.tab { border:1px solid var(--line); background:white; padding:13px; border-radius:14px; font-weight:800; font-size:15px; }
+.tab.active { background:var(--black); color:white; }
+.card { background:white; border-radius:20px; padding:18px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+.section-title { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px; }
+h2 { margin:0; font-size:20px; } h3 { margin:24px 0 10px; font-size:16px; }
+.badge { background:#e9f8ee; color:#147a37; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; white-space:nowrap; }
+.badge.closed { background:#ffe9e9; color:#b31b1b; } .badge.admin { background:#eef2ff; color:#3346a1; }
+label { display:block; margin:14px 0 6px; font-size:14px; font-weight:800; }
+input,select,textarea,button { width:100%; border-radius:13px; border:1px solid var(--line); padding:13px; font-size:16px; font-family:inherit; }
+textarea { min-height:82px; resize:vertical; }
+.grid-2,.summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.option-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.option-grid label { margin:0; background:#fafafa; border:1px solid var(--line); border-radius:13px; padding:11px; font-weight:600; display:flex; align-items:center; gap:8px; }
+.option-grid input { width:auto; }
+.price-box { margin-top:16px; background:#fff8ca; border:1px solid #f1dc65; border-radius:16px; padding:14px; display:flex; justify-content:space-between; align-items:center; }
+.price-box strong { font-size:22px; }
+button { cursor:pointer; border:none; font-weight:900; }
+.primary { background:var(--black); color:white; margin-top:14px; }
+.secondary { background:var(--yellow); color:var(--black); }
+.danger { background:var(--red); color:white; }
+.help { font-size:13px; line-height:1.5; color:#666; }
+.hidden { display:none !important; }
+.login-box { background:#fafafa; border:1px solid var(--line); border-radius:16px; padding:14px; }
+.summary-card { background:#fafafa; border:1px solid var(--line); border-radius:16px; padding:14px; text-align:center; }
+.summary-card span { font-size:13px; color:#555; } .summary-card strong { display:block; margin-top:4px; font-size:24px; }
+.admin-buttons { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:12px; }
+.table-wrap { overflow:auto; border:1px solid var(--line); border-radius:14px; }
+table { width:100%; border-collapse:collapse; min-width:640px; font-size:13px; }
+th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+th { background:#fafafa; white-space:nowrap; }
+.small-btn { padding:7px 9px; font-size:12px; border-radius:9px; background:#eee; }
+@media (max-width:560px){ .grid-2,.option-grid,.summary-grid,.admin-buttons{grid-template-columns:1fr;} h1{font-size:24px;} .card{padding:16px;} }
